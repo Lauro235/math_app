@@ -6,3 +6,118 @@
 @use 'layouts/placement';
 @use 'layouts/flex';
 @use 'layouts/spacing';
+
+// largeNumber
+
+.number-wrapper {
+    font-size: 3rem;
+    background-color: beige;
+}
+
+.num-height {
+    line-height: 32px;
+}
+
+.num-width {
+    text-align: center;
+    width: 40px;
+}
+
+// flex
+
+.flex-row {
+    display: flex;
+    flex-direction: row;
+}
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.center {
+    justify-content: center;
+    align-items: center;
+}
+
+// gridTemplate
+
+body {
+    background-color: blue;
+}
+
+.container-grid {
+    background-color: yellow;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+}
+
+
+header.title {
+    grid-column: 1/4;
+    background-color: green;
+}
+
+main.equation-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column: 1/4;
+
+    // ??
+    min-height: 88vh;
+}
+
+.large {
+    grid-row: 2/3;
+}
+
+.num1>.tens {
+    grid-column: 3 / 5;
+}
+.num1>.digits {
+    grid-column: 5 / 7;
+}
+.num2>.plus {
+    grid-column: 1/3;
+}
+.num2>.tens {
+    grid-column: 3 / 5;
+}
+.num2>.digits {
+    grid-column: 5 / 7;
+}
+
+.num-grid {
+    background-color: lightgreen;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    // grid-auto-rows: minmax(100px, auto);
+
+    grid-template-rows: 60px 100px;
+}
+
+.equation {
+    height: fit-content;
+}
+
+// placement
+
+.equation {
+    // ?
+    grid-column: 3/5;
+    background-color: skyblue;
+}
+
+// spacing
+
+.container-grid {
+    margin: 0 auto;
+}
+
+.equation {
+    padding: 1em;
+}
+
+.gap {
+    gap: 8px;
+}
