@@ -67,25 +67,33 @@ main.equation-grid {
     min-height: 88vh;
 }
 
+.small {
+    grid-row: 1/2;
+}
+
 .large {
     grid-row: 2/3;
 }
 
-.num1>.tens {
+.tens {
     grid-column: 3 / 5;
 }
-.num1>.digits {
+.tens-input {
+    grid-column: 4 / span 1;
+    width: 100%;
+}
+.digits {
     grid-column: 5 / 7;
 }
-.num2>.plus {
+.digits-input {
+    grid-column: 6 / span 1;
+    width: 100%;
+}
+.plus {
     grid-column: 1/3;
 }
-.num2>.tens {
-    grid-column: 3 / 5;
-}
-.num2>.digits {
-    grid-column: 5 / 7;
-}
+
+
 
 .num-grid {
     background-color: lightgreen;
@@ -96,13 +104,13 @@ main.equation-grid {
     grid-template-rows: 60px 100px;
 }
 
-.equation {
+.app-wrapper {
     height: fit-content;
 }
 
 // placement
 
-.equation {
+.app-wrapper {
     // ?
     grid-column: 3/5;
     background-color: skyblue;
@@ -114,10 +122,17 @@ main.equation-grid {
     margin: 0 auto;
 }
 
-.equation {
+.app-wrapper {
     padding: 1em;
 }
 
 .gap {
     gap: 8px;
+}
+
+// NEW CODE (Unorganised)
+
+.next-equation {
+    grid-column: 6/7;
+    height: 50px;
 }

@@ -17,19 +17,23 @@
             <h1>Math App Prototype</h1>
         </header>
         <main class="equation-grid">
-            <div class="equation flex-column gap">
+            <div class="app-wrapper flex-column gap">
                 <div class="num1 num-grid gap">
+                    <input type="text" class="small tens-input">
                     <div class="number-wrapper flex-row center tens large">
                         <p class="num-height num-width">1</p>
                     </div>
+                    <input type="text" class="small digits-input">
                     <div class="number-wrapper flex-row center digits large">
                         <p class="num-height num-width">2</p>
                     </div>
                 </div>
                 <div class="num2 num-grid gap">
+                    <input type="text" class="small tens-input">
                     <div class="number-wrapper flex-row center plus large">
                         <p class="num-height num-width">+</p>
                     </div>
+                    <input type="text" class="small digits-input">
                     <div class="number-wrapper flex-row center tens large">
                         <p class="num-height num-width">1</p>
                     </div>
@@ -38,6 +42,7 @@
                     </div>
                 </div>
             </div>
+            <button class="next-equation">New Problem</button>
         </main>
     </div>
     <script src="./main.js"></script>
