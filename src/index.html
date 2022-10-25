@@ -18,28 +18,33 @@
         </header>
         <main class="equation-grid">
             <div class="app-wrapper flex-column gap">
-                <div class="num1 num-grid gap">
-                    <input type="text" class="small tens-input">
+                <div class="num1 six-col-grid num-grid gap">
+                    <input type="number" class="small tens-input">
                     <div class="number-wrapper flex-row center tens large">
                         <p class="num-height num-width">1</p>
                     </div>
-                    <input type="text" class="small digits-input">
+                    <input type="number" class="small digits-input">
                     <div class="number-wrapper flex-row center digits large">
                         <p class="num-height num-width">2</p>
                     </div>
                 </div>
-                <div class="num2 num-grid gap">
-                    <input type="text" class="small tens-input">
+                <div class="num2 six-col-grid num-grid gap">
+                    <input type="number" class="small tens-input">
                     <div class="number-wrapper flex-row center plus large">
                         <p class="num-height num-width">+</p>
                     </div>
-                    <input type="text" class="small digits-input">
+                    <input type="number" class="small digits-input">
                     <div class="number-wrapper flex-row center tens large">
                         <p class="num-height num-width">1</p>
                     </div>
                     <div class="number-wrapper flex-row center digits large">
                         <p class="num-height num-width">2</p>
                     </div>
+                </div>
+                <div class="user-input six-col-grid gap">
+                    <input class="plus input-width" type="number" />
+                    <input class="tens input-width" type="number" />
+                    <input class="digits input-width" type="number" />
                 </div>
             </div>
             <button class="next-equation">New Problem</button>
