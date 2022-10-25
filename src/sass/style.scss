@@ -143,5 +143,13 @@ main.equation-grid {
 }
 
 .user-input {
-    height: 60px;
+    height: 100px;
+}
+
+.user-input>input {
+    font-size: 3rem;
+}
+
+input[type=number] {
+    text-align: center;
 }
