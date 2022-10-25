@@ -1,0 +1,59 @@
+body {
+    background-color: blue;
+}
+
+.container-grid {
+    background-color: yellow;
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(100px, auto);
+}
+
+
+header.title {
+    grid-column: 1/4;
+    background-color: green;
+}
+
+main.equation-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column: 1/4;
+
+    // ??
+    min-height: 88vh;
+}
+
+.large {
+    grid-row: 2/3;
+}
+
+.num1>.tens {
+    grid-column: 3 / 5;
+}
+.num1>.digits {
+    grid-column: 5 / 7;
+}
+.num2>.plus {
+    grid-column: 1/3;
+}
+.num2>.tens {
+    grid-column: 3 / 5;
+}
+.num2>.digits {
+    grid-column: 5 / 7;
+}
+
+.num-grid {
+    background-color: lightgreen;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    // grid-auto-rows: minmax(100px, auto);
+
+    grid-template-rows: 60px 100px;
+}
+
+.equation {
+    height: fit-content;
+}
