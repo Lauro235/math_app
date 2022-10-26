@@ -9,9 +9,21 @@ let digit;
 let tens;
 let hundreds;
 
+let value = 0;
+
 function updateValue(e) {
-    console.log(e.target.value);
+  //
+  value = e.target.value
+    console.log(value);
+}
+function validateDigit(e) {
+  if (e.key === 'Enter') {
+      console.log('enter clicked');
+      console.log('this is the value: ', value);
+    }
 }
 
-userDigit.addEventListener('keydown', updateValue);
+userDigit.addEventListener('input', updateValue);
+userDigit.addEventListener('keypress', validateDigit);
+
     
