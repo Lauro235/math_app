@@ -1,3 +1,7 @@
+import {number1, number2} from './generator.js'
+
+console.log(number1.digit);
+
 const userDigit = document.getElementById('digit')
 const userTens = document.getElementById('tens')
 const userHundreds = document.getElementById('hundreds') 
@@ -17,9 +21,12 @@ function updateValue(e) {
     console.log(value);
 }
 function validateDigit(e) {
+    let arr;
   if (e.key === 'Enter') {
       console.log('enter clicked');
-      console.log('this is the value: ', value);
+      console.log('this value is: ', value);
+      arr = value.split('')
+      console.log(arr);
     }
 }
 
