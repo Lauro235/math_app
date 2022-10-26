@@ -1,6 +1,6 @@
 import {number1, number2} from './generator.js'
 
-console.log('this is inputCapture.js ', number1);
+console.log('this is inputCapture.js ', number2);
 
 const userDigit = document.getElementById('digit')
 const userTens = document.getElementById('tens')

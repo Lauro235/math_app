@@ -36,6 +36,8 @@ const {lowArrString: low, highArrString: high} = convertNumbers(randomNumberArra
 let number1;
 let number2;
 
+console.log('this is the low value array ', low);
+
 // update document with value of digits
 
 smallDigit.textContent = low[0]
@@ -47,28 +49,28 @@ if (high.length === 2) {
     largeTen.textContent = high[0];
     largeDigit.textContent = high[1];
     number1 = {
-        tens: Number(low[0]),
-        digit: Number(low[1])
+        tens: Number(high[0]),
+        digit: Number(high[1])
     }
 }
 else {
     number1 = {
         tens: null,
-        digit: Number(low[1])
+        digit: Number(high[0])
     }
 }
 if (low.length === 2) {
     smallTen.textContent = low[0];
     smallDigit.textContent = low[1]
     number2 = {
-        tens: Number(high[0]),
-        digit: Number(high[1])
+        tens: Number(low[0]),
+        digit: Number(low[1])
     }
 }
 else {
     number2 = {
         tens: null,
-        digit: Number(high[1])
+        digit: Number(low[0])
     }
 }
 
