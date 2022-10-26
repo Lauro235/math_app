@@ -62,17 +62,17 @@ if (low.length === 2) {
     smallDigit.textContent = low[1]
     number2 = {
         tens: Number(high[0]),
-        digit: Number(high[0])
+        digit: Number(high[1])
     }
 }
 else {
     number2 = {
         tens: null,
-        digit: Number(high[0])
+        digit: Number(high[1])
     }
 }
 
-// console.log(number1);
+console.log('this is generator.js ', number1);
 // console.log(number2);
 
 export {number1, number2};
