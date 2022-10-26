@@ -22,22 +22,22 @@
                 <div class="num1 six-col-grid num-grid gap">
                     <input type="number" class="small tens-input" tabindex="4" disabled>
                     <div class="number-wrapper flex-row center tens large">
-                        <p class="num-height num-width">1</p>
+                        <p id="large-ten" class="num-height num-width"></p>
                     </div>
                     <input type="number" class="small digits-input" tabindex="2" disabled>
                     <div class="number-wrapper flex-row center digits large">
-                        <p class="num-height num-width">2</p>
+                        <p id="large-digit" class="num-height num-width"></p>
                     </div>
                 </div>
                 <div class="num2 six-col-grid  gap">
                     <div class="number-wrapper flex-row center plus">
                         <p class="num-height num-width">+</p>
                     </div>
-                    <div class="number-wrapper flex-row center tens">
-                        <p class="num-height num-width">1</p>
+                    <div id="small-ten" class="number-wrapper flex-row center tens">
+                        <p class="num-height num-width"></p>
                     </div>
-                    <div class="number-wrapper flex-row center digits">
-                        <p class="num-height num-width">2</p>
+                    <div id="small-digit" class="number-wrapper flex-row center digits">
+                        <p class="num-height num-width"></p>
                     </div>
                 </div>
                 <div class="user-input six-col-grid gap">
@@ -49,6 +49,7 @@
             <button class="next-equation">New Problem</button>
         </main>
     </div>
-    <script src="./main.js"></script>
+    <script src="./generator.js"></script>
+    <script src="./inputCapture.js"></script>
 </body>
 </html>
