@@ -33,10 +33,8 @@ const {lowArrString: low, highArrString: high} = convertNumbers(randomNumberArra
 
 // Set lowest numbers (0-9) to include null in the tens prop
 
-let number1;
-let number2;
-
-console.log('this is the low value array ', low);
+let large;
+let small;
 
 // update document with value of digits
 
@@ -48,13 +46,13 @@ largeDigit.textContent = high[0];
 if (high.length === 2) {
     largeTen.textContent = high[0];
     largeDigit.textContent = high[1];
-    number1 = {
+    large = {
         tens: Number(high[0]),
         digit: Number(high[1])
     }
 }
 else {
-    number1 = {
+    large = {
         tens: null,
         digit: Number(high[0])
     }
@@ -62,16 +60,16 @@ else {
 if (low.length === 2) {
     smallTen.textContent = low[0];
     smallDigit.textContent = low[1]
-    number2 = {
+    small = {
         tens: Number(low[0]),
         digit: Number(low[1])
     }
 }
 else {
-    number2 = {
+    small = {
         tens: null,
         digit: Number(low[0])
     }
 }
 
-export {number1, number2};
+export {large, small};
