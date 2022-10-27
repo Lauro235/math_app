@@ -1,6 +1,6 @@
-import {number1, number2} from './generator.js'
+import {large, small} from './generator.js'
 
-console.log('this is inputCapture.js ', number2);
+console.log('this is inputCapture.js ', small);
 
 // USER INPUTS
 const userDigit = document.getElementById('digit')
@@ -61,9 +61,9 @@ if (e.key === 'Enter') {
 }
 
 userDigit.addEventListener('input', updateValue);
-userDigit.addEventListener('keypress', validateDigit);
+userDigit.addEventListener('keyup', validateDigit);
 userTens.addEventListener('input', updateValue);
-userTens.addEventListener('keypress', validateTens);
+userTens.addEventListener('keyup', validateTens);
 
 /*
  Need to sort out validation now.
