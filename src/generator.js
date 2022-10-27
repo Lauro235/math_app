@@ -74,7 +74,4 @@ else {
     }
 }
 
-console.log('this is generator.js ', number1);
-// console.log(number2);
-
 export {number1, number2};
