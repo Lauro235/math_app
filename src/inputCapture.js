@@ -1,124 +1,46 @@
-import {large, small} from './generator.js'
+import { topOperand, bottomOperand, total } from './generator.js'
 
-console.log('this is the large number', large);
-console.log('this is the small number', small);
+function validateDigit(currHelperElem, nextHelperElem, digitIndex, currUserDigitElem, nextUserDigitElem, event) {
+
+  const value = event.target.value;
+  const currHelperValue = currHelperElem ?. value ?? 0;
+  let correctSum = 0;
+  if (nextHelperElem) { 
+    correctSum = topOperand[digitIndex] + bottomOperand[digitIndex];
+  }
+  correctSum += Number(currHelperValue);
+
+  if (Number(value) === correctSum) {
+    let arr = value.split('');
+    if (arr.length < 2) {
+      arr = ['', arr[0]];
+    }
+
+    currUserDigitElem.value = arr[1];
+    if (nextHelperElem) {
+      nextHelperElem.value = arr[0];
+    }
+    userAnswerArray.unshift(arr[1]);
+
+    if (Number(userAnswerArray.join('')) === total) {
+      console.log('Correctly added numbers')
+      console.log(userAnswerArray);
+    } else {
+      nextUserDigitElem.removeAttribute('disabled');
+      nextUserDigitElem.focus();
+    }
+  }
+}
 
 // USER INPUTS
-const userDigit = document.getElementById('digit')
+const userOnes = document.getElementById('ones')
 const userTens = document.getElementById('tens')
-const userHundreds = document.getElementById('hundreds') 
-const helperTen = document.getElementById('helper-tens');
-const helperHundred = document.getElementById('helper-hundreds');
+const userHundreds = document.getElementById('hundreds')
+const helperTens = document.getElementById('helper-tens');
+const helperHundreds = document.getElementById('helper-hundreds');
 
+const userAnswerArray = [];
 
-let digit;
-let tens;
-let hundreds;
-let userAnswerArray = [];
-let result = large + small;
-
-let value = 0;
-
-function updateValue(e) {
-  value = e.target.value
-}
-
-function validateDigit(e) {
-    let arr;
-  if (Number(e.target.value) === (large.digit + small.digit)) {
-      arr = value.split('')
-      if(arr.length === 2) {
-        // helperTen.removeAttribute('disabled');
-        helperTen.value = arr[0];
-        userDigit.value = arr[1];
-        userTens.removeAttribute('disabled');
-        userTens.focus();
-      }
-      if(arr.length === 1) {
-        userTens.removeAttribute('disabled')
-        userTens.focus();
-      }
-      userAnswerArray.unshift(userDigit.value)
-    }
-    console.log(e.target.value);
-}
-/* function validateDigit(e) {
-    let arr;
-  if (e.key === 'Enter') {
-      arr = value.split('')
-      if(arr.length === 2) {
-        // helperTen.removeAttribute('disabled');
-        helperTen.value = arr[0];
-        userDigit.value = arr[1];
-        userTens.removeAttribute('disabled');
-        userTens.focus();
-      }
-      if(arr.length === 1) {
-        userTens.removeAttribute('disabled')
-        userTens.focus();
-      }
-      userAnswerArray.unshift(userDigit.value)
-    }
-} */
-
-function validateTens(e) {
-  let arr;
-  console.log('this is the id: ',e.target.id);
-  if (helperTen) {
-    if (Number(e.target.value) === (helperTen.value + large.tens + small.tens)) {
-      arr = value.split('')
-      if(arr.length === 2) {
-        console.log('carry over the 100');
-        helperHundred.value = arr[0];
-        userTens.value = arr[1];
-        userHundreds.removeAttribute('disabled');
-        userHundreds.focus();
-      }
-      if(arr.length === 1) {
-      }
-    }
-    userAnswerArray.unshift(userTens.value)
-  }
-}
-/* function validateTens(e) {
-  let arr;
-  console.log('this is the id: ',e.target.id);
-    if (e.key === 'Enter') {
-      arr = value.split('')
-      if(arr.length === 2) {
-        console.log('carry over the 100');
-        helperHundred.value = arr[0];
-        userTens.value = arr[1];
-        userHundreds.removeAttribute('disabled');
-        userHundreds.focus();
-      }
-      if(arr.length === 1) {
-        userHundreds.removeAttribute('disabled')
-        userHundreds.focus();
-      }
-    userAnswerArray.unshift(userTens.value)
-  }
-} */
-function validateHundred(e) {
-  let arr;
-  console.log('this is the id: ',e.target.id);
-if (e.key === 'Enter') {
-    userAnswerArray.unshift(userHundreds.value)
-  }
-}
-
-userDigit.addEventListener('input', updateValue);
-userDigit.addEventListener('keypress', validateDigit);
-userTens.addEventListener('input', updateValue);
-userTens.addEventListener('keypress', validateTens);
-userHundreds.addEventListener('input', updateValue);
-userHundreds.addEventListener('keypress', validateHundred);
-
-// Validation 
-
-window.addEventListener('keydown', (e) => {
-  if(userAnswerArray.length >= 1 && e.ctrlKey === true && e.key === 'Enter') {
-  console.log('keys pressed');
-  console.log(userAnswerArray);
-}
-})
+userOnes.addEventListener('keyup', validateDigit.bind(null, null, helperTens, 1, userOnes, userTens));
+userTens.addEventListener('keyup', validateDigit.bind(null, helperTens, helperHundreds, 0, userTens, userHundreds));
+userHundreds.addEventListener('keyup', validateDigit.bind(null, helperHundreds, null, null, userHundreds, null));
