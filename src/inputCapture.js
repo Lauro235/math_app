@@ -10,62 +10,66 @@ const helperTen = document.getElementById('helper-tens');
 const helperHundred = document.getElementById('helper-hundreds');
 
 
-let digit;
-let tens;
-let hundreds;
-
 let value = 0;
 
-function updateValue(e) {
-  //
-  value = e.target.value
-    console.log(value);
+const answer = {
+  digits: small.digit + large.digit,
+  tens: small.tens + large.tens + helperTen,
+  hundreds: helperHundred, 
 }
 
-function validateDigit(e) {
-    let arr;
-    console.log('this is the id: ',e.target.id);
-  if (e.key === 'Enter') {
-      arr = value.split('')
-      if(arr.length === 2) {
-        console.log('carry over the 10');
-        // helperTen.removeAttribute('disabled');
-        helperTen.value = arr[0];
-        userDigit.value = arr[1];
-        userTens.removeAttribute('disabled');
-        userTens.focus();
+const validateUserInput = {
+  digit() {
+    if (answer.digits === value) {
+      console.log("It's a match");
+      if (value > 9) {
+        let numberFragmentArray = breakApartTwoDigitNumber(value)
+        userDigit.value = numberFragmentArray[1];
+        helperTen.value = numberFragmentArray[0];
       }
-      if(arr.length === 1) {
-        console.log('nothing to carry over');
-        userTens.removeAttribute('disabled')
-        userTens.focus();
-      }
+      userTens.removeAttribute('disabled');
+      userTens.focus();
     }
-}
-function validateTens(e) {
-  let arr;
-  console.log('this is the id: ',e.target.id);
-if (e.key === 'Enter') {
-    arr = value.split('')
-    if(arr.length === 2) {
-      console.log('carry over the 100');
-      helperHundred.value = arr[0];
-      userTens.value = arr[1];
-      userHundreds.removeAttribute('disabled');
-      userHundreds.focus();
-    }
-    if(arr.length === 1) {
-      console.log('you solved it!');
-    }
+  },
+  tens() {
+    console.log('tens being analysed');
   }
 }
 
+// REUSABLE CODE =====================
+
+function updateValue(e) {
+  //
+  value = Number(e.target.value);
+    console.log(value);
+}
+
+// not pure code...
+
+function breakApartTwoDigitNumber(num) {
+    console.log('this is the number: ', num);
+    num = num.toString();
+    num = num.split('')
+    return num;
+}
+
+// ====================================
+
+
+
+// Event listeners
+
 userDigit.addEventListener('input', updateValue);
-userDigit.addEventListener('keyup', validateDigit);
+userDigit.addEventListener('keyup', validateUserInput.digit);
 userTens.addEventListener('input', updateValue);
-userTens.addEventListener('keyup', validateTens);
+userTens.addEventListener('keypress', validateUserInput.tens);
+
+
+
+
+// Notes
 
 /*
- Need to sort out validation now.
- Comment to mark moment before major change
+  The user matches a result
+  we convert number to string (in order to update document)
 */
