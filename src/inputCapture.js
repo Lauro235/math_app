@@ -1,7 +1,5 @@
 import {large, small} from './generator.js'
 
-console.log('this is inputCapture.js ', small);
-
 // USER INPUTS
 const userDigit = document.getElementById('digit')
 const userTens = document.getElementById('tens')
@@ -13,10 +11,26 @@ const helperHundred = document.getElementById('helper-hundreds');
 let value = 0;
 
 const answer = {
+  // validation per input
   digits: small.digit + large.digit,
   tens: small.tens + large.tens,
-  hundreds: null, 
-}
+  hundreds: null,
+
+  // validation for answer
+  bigTotal: checkNumber(large.tens, large.digit),
+  smallTotal: checkNumber(small.tens, small.digit),
+  final() {console.log(this.bigTotal);}
+};
+
+console.log(answer.bigTotal);
+console.log(answer.final());
+
+/*
+user stories
+large + small < 10
+large.digit + small.digit > 10 (pass 1 to tens)
+large.tens + small.tens > 10 (pass 1 to hundreds)
+*/
 
 const validateUserInput = {
   digit() {
@@ -67,6 +81,29 @@ function breakApartTwoDigitNumber(num) {
     return num;
 }
 
+function checkNumber(tens, units) {
+  if (tens === null) {
+    return units
+  }
+  else {
+  // Convert tens and units from numbers to strings
+  let tenString = tens.toString();
+  let unitString = units.toString();
+
+  // Concat both strings 
+  tenString.concat(tenString += unitString)
+  
+  // return number to answer object
+  return Number(tenString)
+  }
+  /*
+  tens
+  digit
+  if tens is null {do this}
+  else {return Number(`${tens} + `${units}`}
+  */
+}
+
 // ====================================
 
 
@@ -86,4 +123,11 @@ userTens.addEventListener('keyup', validateUserInput.tens);
 /*
   The user matches a result
   we convert number to string (in order to update document)
+
+
+  Account for
+  Single digit numbers
+  An answer under 10
+
+
 */
