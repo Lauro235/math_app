@@ -1,6 +1,14 @@
 import { topOperand, bottomOperand, total } from './generator.js'
 
-function validateDigit(currHelperElem, nextHelperElem, digitIndex, currUserDigitElem, nextUserDigitElem, event) {
+const audio = new Audio('./assets/awh.mp3');
+
+function validateDigit(
+  currHelperElem,
+  nextHelperElem,
+  digitIndex,
+  currUserDigitElem,
+  nextUserDigitElem,
+  event) {
 
   const value = event.target.value;
   const currHelperValue = currHelperElem ?. value ?? 0;
@@ -25,6 +33,7 @@ function validateDigit(currHelperElem, nextHelperElem, digitIndex, currUserDigit
     if (Number(userAnswerArray.join('')) === total) {
       console.log('Correctly added numbers')
       console.log(userAnswerArray);
+      audio.play();
     } else {
       nextUserDigitElem.removeAttribute('disabled');
       nextUserDigitElem.focus();
