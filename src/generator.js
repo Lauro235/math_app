@@ -36,10 +36,6 @@ const {lowArrString: low, highArrString: high} = convertNumbers(randomNumberArra
 let large;
 let small;
 
-console.log('this is the low value array ', low);
-
-console.log(`low = ${low}. `);
-
 // update document with value of digits
 
 smallDigit.textContent = low[0]
