@@ -1,3 +1,14 @@
+/*
+PLAN 
+let newQuestion = true; - should be shared in generator and inputCapture
+set newQuestion to false after updateHTML
+
+Use while loop to wrap lines 31 and 43 on condition that newQuestion is true
+
+Within codeblock for correct answer set newQuestion to true
+*/
+let newQuestion = false;
+
 function generateRandomNumber () {
   return Math.floor(Math.random() * 100);
 }
@@ -31,4 +42,4 @@ const total = randomNumberArray[0] + randomNumberArray[1];
 updateHTML({ bottomOperand, topOperand });
 
 
-export { bottomOperand, topOperand, total };
+export { bottomOperand, topOperand, total, newQuestion };

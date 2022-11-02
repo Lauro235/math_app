@@ -1,4 +1,4 @@
-import { topOperand, bottomOperand, total } from './generator.js'
+import { topOperand, bottomOperand, total, newQuestion } from './generator.js'
 
 const audio = new Audio('./assets/awh.mp3');
 
@@ -34,6 +34,7 @@ function validateDigit(
       console.log('Correctly added numbers')
       console.log(userAnswerArray);
       audio.play();
+      newQuestion = true;
     } else {
       nextUserDigitElem.removeAttribute('disabled');
       nextUserDigitElem.focus();
