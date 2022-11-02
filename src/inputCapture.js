@@ -1,6 +1,6 @@
 import { topOperand, bottomOperand, total, newQuestion } from './generator.js'
 
-const audio = new Audio('./assets/awh.mp3');
+const audio = new Audio('./assets/twinkle.mp3');
 
 function validateDigit(
   currHelperElem,
