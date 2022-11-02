@@ -19,11 +19,9 @@ const answer = {
   // validation for answer
   bigTotal: checkNumber(large.tens, large.digit),
   smallTotal: checkNumber(small.tens, small.digit),
-  final() {console.log(this.bigTotal);}
+  final() {return answer.bigTotal + answer.smallTotal}
 };
 
-console.log(answer.bigTotal);
-console.log(answer.final());
 
 /*
 user stories
@@ -60,8 +58,8 @@ const validateUserInput = {
         userHundreds.focus();
       }
     }
-    // console.log('tens being analysed');
-  }
+  },
+  
 }
 
 // REUSABLE CODE =====================
@@ -81,6 +79,8 @@ function breakApartTwoDigitNumber(num) {
     return num;
 }
 
+// check number is single or double digits
+
 function checkNumber(tens, units) {
   if (tens === null) {
     return units
@@ -96,13 +96,9 @@ function checkNumber(tens, units) {
   // return number to answer object
   return Number(tenString)
   }
-  /*
-  tens
-  digit
-  if tens is null {do this}
-  else {return Number(`${tens} + `${units}`}
-  */
 }
+
+
 
 // ====================================
 
