@@ -1,24 +1,24 @@
-import { generateRandomNumber, createOperands, randomEquation, topOperand, bottomOperand, total } from './generator.js'
+import { generateRandomNumber, createOperands, randomEquation } from './generator.js'
 import { updateHTML, clearValues } from './updateHTML.js';
 
 const audio = new Audio('./assets/twinkle.mp3');
+
+// has to be at top level cannot be nested
+
+let { randomNumberArray, total, bottomOperand, topOperand } = randomEquation();
+
+updateHTML( bottomOperand, topOperand );
 
 let success = false;
 
 function isSuccess() {
   success = true;
-  console.log('Correctly added numbers')
-  console.log(userAnswerArray);
+  // console.log('Correctly added numbers')
   audio.play();
 
   clearValues();
 }
 
-if (success === true) {
-  let { randomNumberArray, total, bottomOperand, topOperand } = randomEquation();
-  console.log(randomNumberArray);
-  success = false;
-}
 
 function validateDigit(
   currHelperElem,
@@ -27,14 +27,19 @@ function validateDigit(
   currUserDigitElem,
   nextUserDigitElem,
   event) {
-
+    console.log('validation function running');
+  
   const value = event.target.value;
+  
   const currHelperValue = currHelperElem ?. value ?? 0;
+
   let correctSum = 0;
   if (nextHelperElem) { 
     correctSum = topOperand[digitIndex] + bottomOperand[digitIndex];
   }
   correctSum += Number(currHelperValue);
+
+// check individual user inputs match correctSum
 
   if (Number(value) === correctSum) {
     let arr = value.split('');
@@ -43,23 +48,20 @@ function validateDigit(
     }
 
     currUserDigitElem.value = arr[1];
+
+    // if next helper is not null then...
+
     if (nextHelperElem) {
       nextHelperElem.value = arr[0];
     }
     userAnswerArray.unshift(arr[1]);
 
     if (Number(userAnswerArray.join('')) === total) {
-      isSuccess(userAnswerArray)
-
-      
-
-      // let randomNumberArray = [generateRandomNumber(), generateRandomNumber()];
-      // let [ bottomOperandTwo, topOperandTwo ] = createOperands(randomNumberArray);
-      // let totalTwo = randomNumberArray[0] + randomNumberArray[1];
-      // console.log(randomNumberArray);
-
-      // updateHTML(bottomOperandTwo, topOperandTwo);
-      // clearValues();
+      isSuccess(userAnswerArray);
+      ({ randomNumberArray, total, bottomOperand, topOperand } = randomEquation());
+      updateHTML( bottomOperand, topOperand );
+      userAnswerArray = [];
+      clearValues();
     } else {
       nextUserDigitElem.removeAttribute('disabled');
       nextUserDigitElem.focus();
@@ -74,7 +76,7 @@ const userHundreds = document.getElementById('hundreds')
 const helperTens = document.getElementById('helper-tens');
 const helperHundreds = document.getElementById('helper-hundreds');
 
-const userAnswerArray = [];
+let userAnswerArray = [];
 
 userOnes.addEventListener('keyup', validateDigit.bind(null, null, helperTens, 1, userOnes, userTens));
 userTens.addEventListener('keyup', validateDigit.bind(null, helperTens, helperHundreds, 0, userTens, userHundreds));
