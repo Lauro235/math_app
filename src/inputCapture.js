@@ -1,9 +1,7 @@
-import { generateRandomNumber, createOperands, randomEquation } from './generator.js'
+import { randomEquation } from './generator.js'
 import { updateHTML, clearValues } from './updateHTML.js';
 
 const audio = new Audio('./assets/twinkle.mp3');
-
-// has to be at top level cannot be nested
 
 let { randomNumberArray, total, bottomOperand, topOperand } = randomEquation();
 
@@ -13,9 +11,7 @@ let success = false;
 
 function isSuccess() {
   success = true;
-  // console.log('Correctly added numbers')
   audio.play();
-
   clearValues();
 }
 
