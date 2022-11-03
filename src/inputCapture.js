@@ -1,6 +1,24 @@
-import { topOperand, bottomOperand, total } from './generator.js'
+import { generateRandomNumber, createOperands, randomEquation, topOperand, bottomOperand, total } from './generator.js'
+import { updateHTML, clearValues } from './updateHTML.js';
 
 const audio = new Audio('./assets/twinkle.mp3');
+
+let success = false;
+
+function isSuccess() {
+  success = true;
+  console.log('Correctly added numbers')
+  console.log(userAnswerArray);
+  audio.play();
+
+  clearValues();
+}
+
+if (success === true) {
+  let { randomNumberArray, total, bottomOperand, topOperand } = randomEquation();
+  console.log(randomNumberArray);
+  success = false;
+}
 
 function validateDigit(
   currHelperElem,
@@ -31,10 +49,17 @@ function validateDigit(
     userAnswerArray.unshift(arr[1]);
 
     if (Number(userAnswerArray.join('')) === total) {
-      // consider abstracting into success function
-      console.log('Correctly added numbers')
-      console.log(userAnswerArray);
-      audio.play();
+      isSuccess(userAnswerArray)
+
+      
+
+      // let randomNumberArray = [generateRandomNumber(), generateRandomNumber()];
+      // let [ bottomOperandTwo, topOperandTwo ] = createOperands(randomNumberArray);
+      // let totalTwo = randomNumberArray[0] + randomNumberArray[1];
+      // console.log(randomNumberArray);
+
+      // updateHTML(bottomOperandTwo, topOperandTwo);
+      // clearValues();
     } else {
       nextUserDigitElem.removeAttribute('disabled');
       nextUserDigitElem.focus();

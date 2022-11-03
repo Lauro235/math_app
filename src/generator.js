@@ -8,6 +8,8 @@ Use while loop to wrap lines 31 and 43 on condition that newQuestion is true
 Within codeblock for correct answer set newQuestion to true
 */
 
+import {updateHTML} from './updateHTML.js'
+
 function generateRandomNumber () {
   return Math.floor(Math.random() * 100);
 }
@@ -21,36 +23,24 @@ function createOperands(numbers) {
       .map(digit => +digit));  
 }
 
-function updateHTML ({ topOperand, bottomOperand }) {
-  topOnes.textContent = topOperand[1];
-  topTens.textContent = topOperand[0] || '';
-  bottomOnes.textContent = bottomOperand[1];
-  bottomTens.textContent = bottomOperand[0] || '';
-}
-
-// OPERANDS 
-const topTens = document.getElementById('top-tens')
-const topOnes = document.getElementById('top-ones')
-const bottomTens = document.getElementById('bottom-tens')
-const bottomOnes = document.getElementById('bottom-ones')
-
+function randomEquation() {
 const randomNumberArray = [generateRandomNumber(), generateRandomNumber()];
 const [ bottomOperand, topOperand ] = createOperands(randomNumberArray);
-const total = randomNumberArray[0] + randomNumberArray[1];
+let total = randomNumberArray[0] + randomNumberArray[1];
 
-updateHTML({ bottomOperand, topOperand });
+return {
+    randomNumberArray,
+    total,
+    bottomOperand,
+    topOperand
+  }
+}
+
+let { randomNumberArray, total, bottomOperand, topOperand } = randomEquation(); 
+
+// has to be at top level cannot be nested
+
+updateHTML( bottomOperand, topOperand );
 
 
-export { bottomOperand, topOperand, total };
-
-/*
-- wrap random number generator into object of methods
-- export randomNumber object
-
-- create updateHTML file
-in updateHTML
-  - import bottomOperand and topOperand from generator.js
-  - add updateHTML func
-  - add updateHTML call
-  - export updateHTML func
-*/
+export {generateRandomNumber, createOperands, randomEquation, randomNumberArray, bottomOperand, topOperand, total };
