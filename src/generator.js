@@ -7,7 +7,6 @@ Use while loop to wrap lines 31 and 43 on condition that newQuestion is true
 
 Within codeblock for correct answer set newQuestion to true
 */
-let newQuestion = false;
 
 function generateRandomNumber () {
   return Math.floor(Math.random() * 100);
@@ -42,4 +41,16 @@ const total = randomNumberArray[0] + randomNumberArray[1];
 updateHTML({ bottomOperand, topOperand });
 
 
-export { bottomOperand, topOperand, total, newQuestion };
+export { bottomOperand, topOperand, total };
+
+/*
+- wrap random number generator into object of methods
+- export randomNumber object
+
+- create updateHTML file
+in updateHTML
+  - import bottomOperand and topOperand from generator.js
+  - add updateHTML func
+  - add updateHTML call
+  - export updateHTML func
+*/

@@ -1,4 +1,4 @@
-import { topOperand, bottomOperand, total, newQuestion } from './generator.js'
+import { topOperand, bottomOperand, total } from './generator.js'
 
 const audio = new Audio('./assets/twinkle.mp3');
 
@@ -31,10 +31,10 @@ function validateDigit(
     userAnswerArray.unshift(arr[1]);
 
     if (Number(userAnswerArray.join('')) === total) {
+      // consider abstracting into success function
       console.log('Correctly added numbers')
       console.log(userAnswerArray);
       audio.play();
-      newQuestion = true;
     } else {
       nextUserDigitElem.removeAttribute('disabled');
       nextUserDigitElem.focus();
