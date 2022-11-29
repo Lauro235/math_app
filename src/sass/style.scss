@@ -1,11 +1,12 @@
 @use 'base/reset';
-
 @use 'components/large-number';
-
 @use 'layouts/grid';
 @use 'layouts/placement';
 @use 'layouts/flex';
 @use 'layouts/spacing';
+
+$base-color: #73A580;
+
 
 // largeNumber
 
@@ -40,12 +41,8 @@
 
 // gridTemplate
 
-body {
-    background-color: blue;
-}
-
 .container-grid {
-    background-color: yellow;
+    background-color: $base-color;
     width: 90%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
