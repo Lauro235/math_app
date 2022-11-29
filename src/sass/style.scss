@@ -6,13 +6,21 @@
 @use 'layouts/spacing';
 
 $base-color: #73A580;
+$secondary-color: #8073a5;
 
+@font-face {
+    font-family: "Varsity";
+    src: url(../assets/varsity_regular.ttf);
+}
+
+:root {
+    font-family: Varsity, Arial, Helvetica, sans-serif;
+}
 
 // largeNumber
 
 .number-wrapper {
     font-size: 3rem;
-    background-color: beige;
 }
 
 .num-height {
@@ -42,7 +50,7 @@ $base-color: #73A580;
 // gridTemplate
 
 .container-grid {
-    background-color: $base-color;
+    background: linear-gradient(90deg, $base-color, $secondary-color);
     width: 90%;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -52,7 +60,6 @@ $base-color: #73A580;
 
 header.title {
     grid-column: 1/4;
-    background-color: green;
 }
 
 main.equation-grid {
@@ -97,8 +104,8 @@ main.equation-grid {
 }
 
 .num-grid {
-    background-color: lightgreen;
     // grid-auto-rows: minmax(100px, auto);
+    border-bottom: solid 2px black;
 
     grid-template-rows: 60px 100px;
 }
@@ -158,5 +165,10 @@ input[type=number] {
 
 .sub-heading {
     font-size: 1.5rem;
+    letter-spacing: 0.1rem;
     text-align: center;
+}
+
+.title-text {
+    letter-spacing: .3rem;
 }
