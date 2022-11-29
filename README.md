@@ -4,6 +4,7 @@
 
 This is a simple prototype for a basic addition math app. The idea is to help break down the steps for children learning addition.
 
+[Picture of app](./src/assets/app.png)
 ## Tech Stack
 
 - HTML
@@ -27,6 +28,4 @@ I will be deploying the site at some point soon, but until then please feel free
 3. npm start
 
 Enjoy!
-
-[Picture of app](./src/assets/app.png)
 
